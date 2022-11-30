@@ -73,8 +73,8 @@ body {
     border-color: rgb(219, 229, 233);
 }
 
-a:hover{
-    color: black;
+.nav-top > a:hover{
+    color: black !important;
 }
 
 #map {
