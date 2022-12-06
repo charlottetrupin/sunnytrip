@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\views"
+    "\\js",
+    "\\routes",
+    "\\views",
+    "\\views\\layouts",
+    "\\views\\partials"
   ],
-  "SelectedNode": "\\app.js",
+  "SelectedNode": "\\js\\vis-map.js",
   "PreviewInSolutionExplorer": false
 }
