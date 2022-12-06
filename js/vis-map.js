@@ -76,22 +76,22 @@ var sacre_coeur = L.icon({
 
 
 var marker_eiffel_tour = L.marker([48.8582, 2.294519], { icon: eiffel_tower }).addTo(map).bindPopup('Eiffel Tower');
-var marker_louvre = L.marker([48.860995, 2.335813], { icon: louvre }).addTo(map);
-var marker_notre_dame = L.marker([48.852902, 2.350053], { icon: notre_dame }).addTo(map);
-var marker_arc_de_triomphe = L.marker([48.873727, 2.295039], { icon: arc_de_triomphe }).addTo(map);
-var marker_pantheon = L.marker([48.846102, 2.345893], { icon: pantheon }).addTo(map);
-var marker_museum_orsay = L.marker([48.85983, 2.326578], { icon: museum }).addTo(map);
-var marker_petit_palais = L.marker([48.865936, 2.315385], { icon: museum }).addTo(map);
-var marker_grand_palais = L.marker([48.866035, 2.312251], { icon: museum }).addTo(map);
-var marker_palais_de_tokyo = L.marker([48.863914, 2.296537], { icon: museum }).addTo(map);
-var marker_museum_picasso = L.marker([48.859797, 2.362132], { icon: museum }).addTo(map);
-var marker_museum_orangerie = L.marker([48.86373, 2.322661], { icon: museum }).addTo(map);
-var marker_opera_garnier = L.marker([48.871963, 2.331792], { icon: opera_garnier }).addTo(map);
-var marker_pere_lachaise = L.marker([48.86096, 2.393891], { icon: cimetiere }).addTo(map);
-var marker_sacre_coeur = L.marker([48.886755, 2.343025], { icon: sacre_coeur }).addTo(map);
-var marker_luxembourg_garden = L.marker([48.846559, 2.336589], { icon: park }).addTo(map);
-var marker_bois_de_vincennes = L.marker([48.830939, 2.434215], { icon: park }).addTo(map);
-var marker_jardin_des_plantes = L.marker([48.843501, 2.361734], { icon: park }).addTo(map);
+var marker_louvre = L.marker([48.860995, 2.335813], { icon: louvre }).addTo(map).bindPopup('Le Louvre');
+var marker_notre_dame = L.marker([48.852902, 2.350053], { icon: notre_dame }).addTo(map).bindPopup('Notre-Dame');
+var marker_arc_de_triomphe = L.marker([48.873727, 2.295039], { icon: arc_de_triomphe }).addTo(map).bindPopup('Arc de Triomphe');
+var marker_pantheon = L.marker([48.846102, 2.345893], { icon: pantheon }).addTo(map).bindPopup('Pantheon');
+var marker_museum_orsay = L.marker([48.85983, 2.326578], { icon: museum }).addTo(map).bindPopup('Orsay Museum');
+var marker_petit_palais = L.marker([48.865936, 2.315385], { icon: museum }).addTo(map).bindPopup('Petit Palais');
+var marker_grand_palais = L.marker([48.866035, 2.312251], { icon: museum }).addTo(map).bindPopup('Grand Palais');
+var marker_palais_de_tokyo = L.marker([48.863914, 2.296537], { icon: museum }).addTo(map).bindPopup('Palais de Tokyo');
+var marker_museum_picasso = L.marker([48.859797, 2.362132], { icon: museum }).addTo(map).bindPopup('Picasso Museum');
+var marker_museum_orangerie = L.marker([48.86373, 2.322661], { icon: museum }).addTo(map).bindPopup('Orangery Museum');
+var marker_opera_garnier = L.marker([48.871963, 2.331792], { icon: opera_garnier }).addTo(map).bindPopup('Garnier Palace');
+var marker_pere_lachaise = L.marker([48.86096, 2.393891], { icon: cimetiere }).addTo(map).bindPopup('Pere Lachaise Cimetery');
+var marker_sacre_coeur = L.marker([48.886755, 2.343025], { icon: sacre_coeur }).addTo(map).bindPopup('Sacre Coeur Basilica');
+var marker_luxembourg_garden = L.marker([48.846559, 2.336589], { icon: park }).addTo(map).bindPopup('Luxembourg Garden');
+var marker_bois_de_vincennes = L.marker([48.830939, 2.434215], { icon: park }).addTo(map).bindPopup('Bois de Vincennes');
+var marker_jardin_des_plantes = L.marker([48.843501, 2.361734], { icon: park }).addTo(map).bindPopup('Garden of the Plants');
 
 
 //var marker_st_chapelle = L.marker([48.855369, 2.345009], { icon: eglise }).addTo(map);
