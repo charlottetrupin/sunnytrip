@@ -7,6 +7,81 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 
+
+let locations = [
+    {
+        "id": 1,
+        "lat": 48.8582, 
+        "long": 2.294519,
+        "src": '/js/eiffel-tower.png',
+        "title": "Eiffel Tower"
+    },
+    {
+        "id": 2,
+        "lat": 48.860995, 
+        "long": 2.335813,
+        "src": '/js/louvre.png',
+        "title": "Le Louvre"
+    },
+    {
+        "id": 3,
+        "lat": 48.852902,
+        "long": 2.350053,
+        "src": '/js/notre-dame.png',
+        "title": "Notre-Dame de Paris"
+    },
+    {
+        "id": 4,
+        "lat": 48.873727, 
+        "long": 2.295039,
+        "src": '/js/arc-de-triomphe.png',
+        "title" : 'Arc de Triomphe'
+    },
+    {
+        "id": 5,
+        "lat": 48.846102, 
+        "long": 2.345893,
+        "src": '/js/pantheon.png',
+        "title": 'Pantheon'
+    },
+    {
+        "id": 6,
+        "lat": 48.85983, 
+        "long": 2.326578,
+        "src": '/js/museum.png',
+        "title": 'Orsay Museum'
+    },
+    {
+        "id": 7,
+        "lat": 48.85983,
+        "long": 2.326578,
+        "src": '/js/museum.png',
+        "title": 'Orsay Museum'
+    },
+    {
+        "id": 8,
+        "lat": 48.85983,
+        "long": 2.326578,
+        "src": '/js/museum.png',
+        "title": 'Orsay Museum'
+    },
+    {
+        "id": 9,
+        "lat": 48.85983,
+        "long": 2.326578,
+        "src": '/js/museum.png',
+        "title": 'Orsay Museum'
+    },
+    {
+        "id": 10,
+        "lat": 48.85983,
+        "long": 2.326578,
+        "src": '/js/museum.png',
+        "title": 'Orsay Museum'
+    }
+]
+
+
 var museum = L.icon({
     iconUrl: '/js/museum.png',
     iconSize: [40, 40], // size of the icon 
@@ -75,7 +150,8 @@ var sacre_coeur = L.icon({
 
 
 
-var marker_eiffel_tour = L.marker([48.8582, 2.294519], { icon: eiffel_tower }).addTo(map).bindPopup('Eiffel Tower');
+var marker_eiffel_tour = L.marker([48.8582, 2.294519], { icon: eiffel_tower }).addTo(map).bindPopup('Eiffel Tower'+
+    '<br/><button type="button" >Add to path </button>');
 var marker_louvre = L.marker([48.860995, 2.335813], { icon: louvre }).addTo(map).bindPopup('Le Louvre');
 var marker_notre_dame = L.marker([48.852902, 2.350053], { icon: notre_dame }).addTo(map).bindPopup('Notre-Dame');
 var marker_arc_de_triomphe = L.marker([48.873727, 2.295039], { icon: arc_de_triomphe }).addTo(map).bindPopup('Arc de Triomphe');
@@ -93,7 +169,10 @@ var marker_luxembourg_garden = L.marker([48.846559, 2.336589], { icon: park }).a
 var marker_bois_de_vincennes = L.marker([48.830939, 2.434215], { icon: park }).addTo(map).bindPopup('Bois de Vincennes');
 var marker_jardin_des_plantes = L.marker([48.843501, 2.361734], { icon: park }).addTo(map).bindPopup('Garden of the Plants');
 
-
+/**
+marker.bindPopup(feature.properties.Name +
+    '<br/><button type="button" class="btn btn-primary sidebar-open-button" data = "' + feature.properties.OBJECTID + '" ' + '>Click for more</button>');
+**/
 //var marker_st_chapelle = L.marker([48.855369, 2.345009], { icon: eglise }).addTo(map);
 //var marker_montparnasse = L.marker([48.842091, 2.321968]).addTo(map);
 
