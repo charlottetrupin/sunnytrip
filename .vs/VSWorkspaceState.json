@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\controllers",
     "\\js",
+    "\\models",
     "\\routes",
     "\\views",
     "\\views\\layouts",

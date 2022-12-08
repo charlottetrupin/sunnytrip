@@ -53,103 +53,136 @@ let locations = [
     },
     {
         "id": 7,
-        "lat": 48.85983,
-        "long": 2.326578,
+        "lat": 48.865936, 
+        "long": 2.315385,
         "src": '/js/museum.png',
-        "title": 'Orsay Museum'
+        "title": 'Petit Palais'
     },
     {
         "id": 8,
-        "lat": 48.85983,
-        "long": 2.326578,
+        "lat": 48.866035,
+        "long": 2.312251,
         "src": '/js/museum.png',
-        "title": 'Orsay Museum'
+        "title": 'Grand Palais'
     },
     {
         "id": 9,
-        "lat": 48.85983,
-        "long": 2.326578,
+        "lat": 48.863914, 
+        "long": 2.296537,
         "src": '/js/museum.png',
-        "title": 'Orsay Museum'
+        "title": 'Palais de Tokyo'
     },
     {
         "id": 10,
-        "lat": 48.85983,
-        "long": 2.326578,
+        "lat": 48.859797, 
+        "long": 2.362132,
         "src": '/js/museum.png',
-        "title": 'Orsay Museum'
+        "title": 'Picasso Museum'
+    },
+    {
+        "id": 11,
+        "lat": 48.86373, 
+        "long": 2.322661,
+        "src": '/js/museum.png',
+        "title": 'Orangery Museum'
+    },
+    {
+        "id": 12,
+        "lat": 48.871963, 
+        "long": 2.331792,
+        "src": '/js/palais-garnier.png',
+        "title": 'Garnier Palace'
+    },
+    {
+        "id": 13,
+        "lat": 48.86096,
+        "long": 2.393891,
+        "src": '/js/cimetiere.png',
+        "title": 'Pere Lachaise Cimetery'
+    },
+    {
+        "id": 14,
+        "lat": 48.886755, 
+        "long": 2.343025,
+        "src": '/js/sacre-coeur.png',
+        "title": 'Sacre Coeur Basilica'
+    },
+    {
+        "id": 15,
+        "lat": 48.846559,
+        "long": 2.336589,
+        "src": '/js/park.png',
+        "title": 'Luxembourg Garden'
+    },
+    {
+        "id": 16,
+        "lat": 48.830939, 
+        "long": 2.434215,
+        "src": '/js/park.png',
+        "title": 'Bois de Vincennes'
+    },
+    {
+        "id": 17,
+        "lat": 48.843501, 
+        "long": 2.361734,
+        "src": '/js/park.png',
+        "title": 'Garden of the Plants'
     }
+    
 ]
 
+let popupOption = {
+    "closeButton": false,
+    
+}
 
-var museum = L.icon({
-    iconUrl: '/js/museum.png',
-    iconSize: [40, 40], // size of the icon 
+
+locations.forEach(element => {
+
+    let btnAdd = document.createElement('button');
+    btnAdd.className = 'addtopath';
+    btnAdd.innerHTML = 'Add to path';
+    
+
+    let btnDiv = document.createElement('div')
+    btnDiv.append(element.title)
+    let br = document.createElement('br');
+    btnDiv.append(br);
+    btnDiv.append(btnAdd)
+
+
+
+
+    new L.Marker([element.lat, element.long], { icon: new L.icon({ iconUrl: element.src, iconSize: [40, 40] }) }).addTo(map)
+
+        .on("mouseover", event => {
+            event.target.bindPopup(element.title, popupOption).openPopup();
+        })
+        .on("contextmenu", event => {
+            event.target.bindPopup(btnDiv).openPopup();
+        })
+
+
+    btnAdd.onclick = () => {
+        var elem = document.createElement("img");
+        //elem.setAttribute("src", element.src);
+        elem.src = element.src;
+        elem.setAttribute("height", "40");
+        elem.setAttribute("width", "40");
+       // elem.setAttribute("alt", "Flower");
+        //elem.src = 'images/hydrangeas.jpg';
+        var headerlist = document.getElementById('path');
+        headerlist.appendChild(elem);
+        headerlist.innerHTML = headerlist.innerHTML;
+        
+    }
 });
 
 
-var park = L.icon({
-    iconUrl: '/js/park.png',
-    iconSize: [40, 40], // size of the icon 
-   
-
-});
-
-var pantheon = L.icon({
-    iconUrl: '/js/pantheon.png',
-    iconSize: [40, 40], // size of the icon 
-})
-
-
-var eiffel_tower = L.icon({
-    iconUrl: '/js/eiffel-tower.png',
-    iconSize: [40, 40], // size of the icon 
-})
-
-
-var notre_dame = L.icon({
-    iconUrl: '/js/notre-dame.png',
-    iconSize: [40, 40], // size of the icon 
-})
-
-
-var arc_de_triomphe = L.icon({
-    iconUrl: '/js/arc-de-triomphe.png',
-    iconSize: [40, 40], // size of the icon 
-})
-
-var louvre = L.icon({
-    iconUrl: '/js/louvre.png',
-    iconSize: [40, 40], // size of the icon 
-})
-
-var eglise = L.icon({
-    iconUrl: '/js/eglise.png',
-    iconSize: [35, 35], // size of the icon 
-})
-
-var opera_garnier = L.icon({
-    iconUrl: '/js/palais-garnier.png',
-    iconSize: [40, 40], // size of the icon 
-})
-
-var cimetiere = L.icon({
-    iconUrl: '/js/cimetiere.png',
-    iconSize: [40, 40], // size of the icon 
-})
-
-var canal = L.icon({
-    iconUrl: '/js/bridge.png',
-    iconSize: [35, 35], // size of the icon 
-})
-
-var sacre_coeur = L.icon({
-    iconUrl: '/js/sacre-coeur.png',
-    iconSize: [40, 40], // size of the icon 
-})
 
 
 
+/*
 var marker_eiffel_tour = L.marker([48.8582, 2.294519], { icon: eiffel_tower }).addTo(map).bindPopup('Eiffel Tower'+
     '<br/><button type="button" >Add to path </button>');
 var marker_louvre = L.marker([48.860995, 2.335813], { icon: louvre }).addTo(map).bindPopup('Le Louvre');
@@ -168,7 +201,7 @@ var marker_sacre_coeur = L.marker([48.886755, 2.343025], { icon: sacre_coeur }).
 var marker_luxembourg_garden = L.marker([48.846559, 2.336589], { icon: park }).addTo(map).bindPopup('Luxembourg Garden');
 var marker_bois_de_vincennes = L.marker([48.830939, 2.434215], { icon: park }).addTo(map).bindPopup('Bois de Vincennes');
 var marker_jardin_des_plantes = L.marker([48.843501, 2.361734], { icon: park }).addTo(map).bindPopup('Garden of the Plants');
-
+*/
 /**
 marker.bindPopup(feature.properties.Name +
     '<br/><button type="button" class="btn btn-primary sidebar-open-button" data = "' + feature.properties.OBJECTID + '" ' + '>Click for more</button>');
