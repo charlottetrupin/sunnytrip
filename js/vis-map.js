@@ -6,6 +6,12 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+var map_path = [];
+
+function writing_path() {
+  
+}
+  
 
 
 let locations = [
@@ -131,17 +137,28 @@ let locations = [
     
 ]
 
+var latlngs = [];
+
+
+
+
+
 let popupOption = {
     "closeButton": false,
     
 }
 
-
+var id = 1;
+var count = 0;
+var insert = false;
+var polyline = L.polyline([], { color: 'red' }).addTo(map); ;
 locations.forEach(element => {
-
+    
     let btnAdd = document.createElement('button');
     btnAdd.className = 'addtopath';
     btnAdd.innerHTML = 'Add to path';
+    
+
     
 
     let btnDiv = document.createElement('div')
@@ -163,17 +180,120 @@ locations.forEach(element => {
         })
 
 
+    
+
     btnAdd.onclick = () => {
-        var elem = document.createElement("img");
-        //elem.setAttribute("src", element.src);
-        elem.src = element.src;
-        elem.setAttribute("height", "40");
-        elem.setAttribute("width", "40");
-       // elem.setAttribute("alt", "Flower");
-        //elem.src = 'images/hydrangeas.jpg';
-        var headerlist = document.getElementById('path');
-        headerlist.appendChild(elem);
-        headerlist.innerHTML = headerlist.innerHTML;
+
+        
+        const radioButtons = document.querySelectorAll('input[name="hour"]');
+        for (const radioButton of radioButtons) {
+            if (radioButton.checked) {
+                id = radioButton.value;
+                break;
+            }
+        }
+        
+
+        var c = id.toString();
+        var headerlist = document.getElementById(c);
+        
+        if(headerlist.childNodes.length == 0){
+            
+            var span = document.createElement("span");
+       
+
+            var icone = document.createElement("img");
+            icone.src = element.src;
+            icone.setAttribute("height", "40");
+            icone.setAttribute("width", "40");
+            icone.style.marginLeft = "-1px";
+            icone.style.marginTop = "-8.5px";
+    
+            var name_place = document.createElement("p")
+            name_place.setAttribute("id", "name-place");
+            var br = document.createElement("br")
+            name_place.innerHTML = element.title;
+            name_place.style.marginLeft = "-10px";
+    
+    
+            span.appendChild(icone);
+            span.appendChild(name_place);
+            
+        
+           
+            span.setAttribute("id", id);
+    
+            headerlist.appendChild(span);
+            
+            if(map_path.length == 0) {
+                map_path.push( {
+                    id : id,
+                    pos : [element.lat,element.long]})
+                    
+            }
+            else {
+                for(let i = 0 ; i < map_path.length; i++){
+                    if(parseInt(map_path[i].id) > c) {
+                        console.log("there")
+                        insert = true;
+                        map_path.splice(i,0,{
+                            id : id,
+                            pos : [element.lat,element.long]}
+                        )
+                        break;
+                    }
+                }
+                console.log(insert);
+                if(!insert){
+                    console.log("ici")
+                    map_path.push( {
+                        id : id,
+                        pos : [element.lat,element.long]})
+                }
+             insert = false;   
+                    
+            }
+           
+           
+           
+           
+            //map_path.splice(0, 0,[element.lat,element.long]);
+
+           
+          //  get_path();
+            
+            //writing_path();
+            //point_pe = new Array();
+
+        
+            id++;
+
+        
+            //for(let i = 0; i < map_path.length; i++){
+                //console.log(map_path[count].pos);
+                //var polyline = L.polyline(map_path, { color: 'red' }).addTo(map);
+            //}
+           
+            draw_path();
+
+            span.ondblclick = function(event) {
+                $(headerlist).html(""); 
+                for(let i = 0 ; i < map_path.length; i++){
+                    if(map_path[i].id == c){
+                        map_path.splice(i,1);
+                        draw_path();
+                        break;
+                    }
+                }
+
+                //console.log(map_path[c])
+                //map_path
+                
+            }
+
+            
+            
+        }
         
     }
 });
@@ -181,45 +301,22 @@ locations.forEach(element => {
 
 
 
-
-/*
-var marker_eiffel_tour = L.marker([48.8582, 2.294519], { icon: eiffel_tower }).addTo(map).bindPopup('Eiffel Tower'+
-    '<br/><button type="button" >Add to path </button>');
-var marker_louvre = L.marker([48.860995, 2.335813], { icon: louvre }).addTo(map).bindPopup('Le Louvre');
-var marker_notre_dame = L.marker([48.852902, 2.350053], { icon: notre_dame }).addTo(map).bindPopup('Notre-Dame');
-var marker_arc_de_triomphe = L.marker([48.873727, 2.295039], { icon: arc_de_triomphe }).addTo(map).bindPopup('Arc de Triomphe');
-var marker_pantheon = L.marker([48.846102, 2.345893], { icon: pantheon }).addTo(map).bindPopup('Pantheon');
-var marker_museum_orsay = L.marker([48.85983, 2.326578], { icon: museum }).addTo(map).bindPopup('Orsay Museum');
-var marker_petit_palais = L.marker([48.865936, 2.315385], { icon: museum }).addTo(map).bindPopup('Petit Palais');
-var marker_grand_palais = L.marker([48.866035, 2.312251], { icon: museum }).addTo(map).bindPopup('Grand Palais');
-var marker_palais_de_tokyo = L.marker([48.863914, 2.296537], { icon: museum }).addTo(map).bindPopup('Palais de Tokyo');
-var marker_museum_picasso = L.marker([48.859797, 2.362132], { icon: museum }).addTo(map).bindPopup('Picasso Museum');
-var marker_museum_orangerie = L.marker([48.86373, 2.322661], { icon: museum }).addTo(map).bindPopup('Orangery Museum');
-var marker_opera_garnier = L.marker([48.871963, 2.331792], { icon: opera_garnier }).addTo(map).bindPopup('Garnier Palace');
-var marker_pere_lachaise = L.marker([48.86096, 2.393891], { icon: cimetiere }).addTo(map).bindPopup('Pere Lachaise Cimetery');
-var marker_sacre_coeur = L.marker([48.886755, 2.343025], { icon: sacre_coeur }).addTo(map).bindPopup('Sacre Coeur Basilica');
-var marker_luxembourg_garden = L.marker([48.846559, 2.336589], { icon: park }).addTo(map).bindPopup('Luxembourg Garden');
-var marker_bois_de_vincennes = L.marker([48.830939, 2.434215], { icon: park }).addTo(map).bindPopup('Bois de Vincennes');
-var marker_jardin_des_plantes = L.marker([48.843501, 2.361734], { icon: park }).addTo(map).bindPopup('Garden of the Plants');
-*/
-/**
-marker.bindPopup(feature.properties.Name +
-    '<br/><button type="button" class="btn btn-primary sidebar-open-button" data = "' + feature.properties.OBJECTID + '" ' + '>Click for more</button>');
-**/
-//var marker_st_chapelle = L.marker([48.855369, 2.345009], { icon: eglise }).addTo(map);
-//var marker_montparnasse = L.marker([48.842091, 2.321968]).addTo(map);
-
-//var marker_canal_st_martin = L.marker([48.871292, 2.365294], { icon: canal }).addTo(map);
+function draw_path(){
+    polyline.removeFrom(map);
+            latlngs = [];
+            console.log(map_path)
+            for(let i = 0 ; i < map_path.length; i++){
+                latlngs.push(map_path[i].pos)
+              //  console.log(map_path[i])
+            }
+            console.log(latlngs);
+            polyline = L.polyline(latlngs, { color: '   #9c1c1c   ' }).addTo(map);
+}
 
 
-
-// create a red polyline from an array of LatLng points
-var latlngs = [
-    [45.51, -122.68],
-    [37.77, -122.43],
-    [34.04, -118.2]
-];
-
+function get_path(){
+    return map_path;
+}
 
 
 

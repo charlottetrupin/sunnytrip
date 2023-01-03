@@ -1,18 +1,160 @@
-<div> 
+<link rel="stylesheet" href="css/style.css">
+
+<div>
 	<div id="map">
-		<script src="./js/vis-map.js"></script>
+
+		<script  src="./js/vis-map.js"></script>
+
+		<script> 
+
+			
+
+		//function SaveData() {
+    	/*let d = get_path();
+   		console.log(d);
+		$.ajax({
+		method: "POST",
+		url: "/path-trip",
+		data: { path: d },
+		context: document.body
+		}).done(function (pa) {
+		//$( this ).addClass( "done" );
+		console.log("succeed at creating a path");
+		console.log(pa);
+		}).fail(function (e) {
+		console.log("error");
+		console.log(e);
+		})*/
+		//}
+		
+		</script>
 	</div>
 
-	<div id ="trip">
-		<div id="date"> 08 December 2022 
+	<div id="trip">
+		<div id="date"> 08 December 2022
 		</div>
-		
+		<br>
 		<div id=" weather">
-		
+			<p></p>
 		</div>
-			
-		<div id="path">
 
+		<div id="path">
+			<div class="timeline-wrapper">
+					<div class="timeline-line"></div>
+					<div class="timeline-content-item">
+						<span class="dot" id="1"></span>
+						<span class ="hour">
+							<input type="radio" value = "1" id="hour" name="hour" checked>
+							<label for="html">8 AM</label></span>
+					
+					</div> 
+
+					<div class="timeline-content-item" data-timeline="hour-9">
+						<span class="dot" id="2"></span>
+						<span class ="hour" >
+							<input type="radio" value ="2" id="hour" name="hour">
+							<label for="html">9 AM</label></span>
+						
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-10">
+						<span class="dot" id="3"></span>
+						<span class ="hour">
+							<input type="radio" value="3" id="hour" name="hour">
+							<label for="html">10 PM</label></span>
+						
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-11">
+						<span class="dot" id="4"></span>
+						<span class ="hour">
+							<input type="radio" value="4" id="hour" name="hour">
+							<label for="html">11 AM</label></span> 
+						
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-12">
+						<span class="dot" id="5"></span>
+						<span class ="hour">
+							<input type="radio" value="5" id="hour" name="hour">
+							<label for="html">12 PM</label></span>
+						
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-13">
+						<span class="dot" id="6"></span>
+						<span class ="hour">
+							<input type="radio" value="6" id="hour" name="hour">
+							<label for="html">1 PM</label></span>
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-14">
+						<span class="dot" id="7"></span>
+						<span class ="hour">
+							<input type="radio" value="7" id="hour" name="hour">
+							<label for="html">2 PM</label></span>
+
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-15">
+						<span class="dot" id="8"></span>
+						<span class ="hour">
+							<input type="radio" value = "8" id="hour" name="hour">
+							<label for="html">3 PM</label></span>
+						
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-16">
+						<span class="dot" id="9"></span>
+						<span class ="hour">
+							<input type="radio" value ="9" id="hour" name="hour">
+							<label for="html">4 PM</label></span>
+						
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-17">
+						<span class="dot" id="10"></span>
+						<span class ="hour">
+							<input type="radio" value="10" id="hour" name="hour">
+							<label for="html">5 PM</label></span>
+						
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-21">
+						<span class="dot" id="11"></span>
+						<span class ="hour">
+							<input type="radio" value="11" id="hour" name="hour">
+							<label for="html">6 PM</label></span>
+						
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-19">
+						<span class="dot" id="12"></span>
+						<span class ="hour">
+							<input type="radio" value="12" id="hour" name="hour">
+							<label for="html">7 PM</label></span>
+						
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-20">
+						<span class="dot" id="13"></span>
+						<span class ="hour">
+							<input type="radio" value="13" id="hour" name="hour">
+							<label for="html">8 PM</label>
+						
+						</span>
+						
+					</div>
+
+					<div class="timeline-content-item" data-timeline="hour-21">
+						<span class="dot" id="14"></span>
+						<span class ="hour">
+							<input type="radio" value="14" id="hour" name="hour">
+							<label for="html">9 PM</label>
+						</span>
+						
+					</div>
+			</div>
 		</div>
 	</div>
 </div>
