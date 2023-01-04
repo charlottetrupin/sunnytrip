@@ -22,14 +22,16 @@
         else {
           console.log("ici")
           var path_trip = get_path();
+          var date_trip = get_date();
+          console.log(date_trip);
           $.ajax({
           method: "POST",
           url: "/savetrip",
-          data: { p: path_trip },
+          data: { p: path_trip, d:date_trip },
           context: document.body
           }).done(function (pa) {
           //$( this ).addClass( "done" );
-          console.log("succeed at creating a path");
+          console.log("succeed at saving the trip");
         }).fail(function (e) {  
           console.log("error");
           console.log(e);

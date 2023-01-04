@@ -5,7 +5,7 @@ const app = express();              //Instantiate an express app, the main work 
 const port = 8080;                  //Save the port number where your server will be listening
 
 const bodyParser = require('body-parser');
-
+const fs = require('fs');
 //conntectin API to app.post request
 const request = require('request');
 const apiKey='f5888c48b5394d11c84f3d67e835ca8e';
@@ -84,17 +84,11 @@ app.get('', (req, res) => {
       res.sendFile('views/login.html',{root:__dirname})
 })
 
-app.get('/weather',function (req,res){
-  //res.send('Hello World')
-  console.log("ici");
-  res.render('views/vis.ejs',{weather:null, error:null, weatherIcon:null, date:null});
-})
 
 
 app.get('/vis', function (req, res) {
   session=req.session;
   if(session.userid){
-    console.log("i'm here");
     res.render("vis.ejs", {'userid':session.userid, 'username': session.username})
   } else
     res.sendFile('views/login.html',{root:__dirname})
@@ -111,9 +105,15 @@ app.get('/trip', function(req,res) {
 
 
 app.post('/savetrip', function(req,res){
-    console.log("here")
-    var b = req.body.p;
-    console.log(b);
+    var path = req.body.p;
+    var date = req.body.d
+    console.log(date); 
+    fs.writeFile("json/"+date+".json", JSON.stringify(path), err=>{
+        if(err){
+          console.log(err);
+        }
+        else { console.log("file save correctly")}
+    });
     res.end();
 })
 

@@ -20,119 +20,119 @@ let locations = [
         "id": 1,
         "lat": 48.8582, 
         "long": 2.294519,
-        "src": '/js/eiffel-tower.png',
+        "src": '/images/eiffel-tower.png',
         "title": "Eiffel Tower"
     },
     {
         "id": 2,
         "lat": 48.860995, 
         "long": 2.335813,
-        "src": '/js/louvre.png',
+        "src": '/images/louvre.png',
         "title": "Le Louvre"
     },
     {
         "id": 3,
         "lat": 48.852902,
         "long": 2.350053,
-        "src": '/js/notre-dame.png',
+        "src": '/images/notre-dame.png',
         "title": "Notre-Dame de Paris"
     },
     {
         "id": 4,
         "lat": 48.873727, 
         "long": 2.295039,
-        "src": '/js/arc-de-triomphe.png',
+        "src": '/images/arc-de-triomphe.png',
         "title" : 'Arc de Triomphe'
     },
     {
         "id": 5,
         "lat": 48.846102, 
         "long": 2.345893,
-        "src": '/js/pantheon.png',
+        "src": '/images/pantheon.png',
         "title": 'Pantheon'
     },
     {
         "id": 6,
         "lat": 48.85983, 
         "long": 2.326578,
-        "src": '/js/museum.png',
+        "src": '/images/museum.png',
         "title": 'Orsay Museum'
     },
     {
         "id": 7,
         "lat": 48.865936, 
         "long": 2.315385,
-        "src": '/js/museum.png',
+        "src": '/images/museum.png',
         "title": 'Petit Palais'
     },
     {
         "id": 8,
         "lat": 48.866035,
         "long": 2.312251,
-        "src": '/js/museum.png',
+        "src": '/images/museum.png',
         "title": 'Grand Palais'
     },
     {
         "id": 9,
         "lat": 48.863914, 
         "long": 2.296537,
-        "src": '/js/museum.png',
+        "src": '/images/museum.png',
         "title": 'Palais de Tokyo'
     },
     {
         "id": 10,
         "lat": 48.859797, 
         "long": 2.362132,
-        "src": '/js/museum.png',
+        "src": '/images/museum.png',
         "title": 'Picasso Museum'
     },
     {
         "id": 11,
         "lat": 48.86373, 
         "long": 2.322661,
-        "src": '/js/museum.png',
+        "src": '/images/museum.png',
         "title": 'Orangery Museum'
     },
     {
         "id": 12,
         "lat": 48.871963, 
         "long": 2.331792,
-        "src": '/js/palais-garnier.png',
+        "src": '/images/palais-garnier.png',
         "title": 'Garnier Palace'
     },
     {
         "id": 13,
         "lat": 48.86096,
         "long": 2.393891,
-        "src": '/js/cimetiere.png',
+        "src": '/images/cimetiere.png',
         "title": 'Pere Lachaise Cimetery'
     },
     {
         "id": 14,
         "lat": 48.886755, 
         "long": 2.343025,
-        "src": '/js/sacre-coeur.png',
+        "src": '/images/sacre-coeur.png',
         "title": 'Sacre Coeur Basilica'
     },
     {
         "id": 15,
         "lat": 48.846559,
         "long": 2.336589,
-        "src": '/js/park.png',
+        "src": '/images/park.png',
         "title": 'Luxembourg Garden'
     },
     {
         "id": 16,
         "lat": 48.830939, 
         "long": 2.434215,
-        "src": '/js/park.png',
+        "src": '/images/park.png',
         "title": 'Bois de Vincennes'
     },
     {
         "id": 17,
         "lat": 48.843501, 
         "long": 2.361734,
-        "src": '/js/park.png',
+        "src": '/images/park.png',
         "title": 'Garden of the Plants'
     }
     
@@ -295,6 +295,9 @@ function get_path(){
     return map_path;
 }
 
+function get_date(){
+    return document.getElementById("date").innerHTML;
+}
 
 
 /**
