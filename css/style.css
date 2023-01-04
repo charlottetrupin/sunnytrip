@@ -21,6 +21,7 @@ body {
   display:grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: 100px auto 50px;
+  
   height: calc(100vh - 20px);
 }
 
@@ -44,10 +45,23 @@ body {
   padding: 10px;
 }
 
-
-#content-right {
-  padding: 10px;
+#right {
+  grid-column: 6/6;
+  grid-row: 1;
+  margin-top: 550px;
+  margin-left: 10px;
 }
+
+#saving{
+  background-color: rgb(194, 111, 22);
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 2%;
+  visibility: hidden;
+ }
+
+
 
 #footer {
     background: rgb(236, 157, 31);
@@ -152,7 +166,6 @@ body {
 
    
 
-   
 
     
     

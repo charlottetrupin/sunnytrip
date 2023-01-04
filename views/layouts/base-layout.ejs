@@ -14,6 +14,24 @@
  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
      crossorigin=""></script>
+     <script> 
+      function savePath(){
+        var path_trip = get_path();
+        $.ajax({
+          method: "POST",
+          url: "/savetrip",
+          data: { path: path_trip },
+          context: document.body
+          }).done(function (pa) {
+          //$( this ).addClass( "done" );
+          console.log("succeed at creating a path");
+          console.log(pa);
+        }).fail(function (e) {
+          console.log("error");
+          console.log(e);
+        })
+      }
+    </script>
 
 </head>
 
@@ -23,14 +41,14 @@
       <%- include('../partials/header') %>
     </div>
     <div id="content">
-  
+      <div id = "right">
+         <button onclick="savePath()" id ="saving">Save your trip</button> 
+      </div>
       <div id="content-center">
         <main>
           <%- body %>
         </main>
-      </div>
-      <div id="content-right">
-      </div>
+      </div> 
     </div>
     <div id="footer">
       <%- include('../partials/footer') %>

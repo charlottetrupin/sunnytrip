@@ -8,10 +8,11 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var map_path = [];
 
-function writing_path() {
-  
-}
-  
+
+var save_trip = document.getElementById("saving");
+save_trip.style.visibility = "visible"  ;
+
+
 
 
 let locations = [
@@ -233,8 +234,8 @@ locations.forEach(element => {
             }
             else {
                 for(let i = 0 ; i < map_path.length; i++){
+                
                     if(parseInt(map_path[i].id) > c) {
-                        console.log("there")
                         insert = true;
                         map_path.splice(i,0,{
                             id : id,
@@ -242,10 +243,9 @@ locations.forEach(element => {
                         )
                         break;
                     }
+                    
                 }
-                console.log(insert);
                 if(!insert){
-                    console.log("ici")
                     map_path.push( {
                         id : id,
                         pos : [element.lat,element.long]})
@@ -253,27 +253,9 @@ locations.forEach(element => {
              insert = false;   
                     
             }
-           
-           
-           
-           
-            //map_path.splice(0, 0,[element.lat,element.long]);
-
-           
-          //  get_path();
-            
-            //writing_path();
-            //point_pe = new Array();
-
         
             id++;
 
-        
-            //for(let i = 0; i < map_path.length; i++){
-                //console.log(map_path[count].pos);
-                //var polyline = L.polyline(map_path, { color: 'red' }).addTo(map);
-            //}
-           
             draw_path();
 
             span.ondblclick = function(event) {
@@ -285,10 +267,6 @@ locations.forEach(element => {
                         break;
                     }
                 }
-
-                //console.log(map_path[c])
-                //map_path
-                
             }
 
             
@@ -301,15 +279,14 @@ locations.forEach(element => {
 
 
 
+
+
 function draw_path(){
     polyline.removeFrom(map);
             latlngs = [];
-            console.log(map_path)
             for(let i = 0 ; i < map_path.length; i++){
                 latlngs.push(map_path[i].pos)
-              //  console.log(map_path[i])
             }
-            console.log(latlngs);
             polyline = L.polyline(latlngs, { color: '   #9c1c1c   ' }).addTo(map);
 }
 

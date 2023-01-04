@@ -86,7 +86,6 @@ app.get('/vis', function (req, res) {
 
 
 app.get('/trip', function(req,res) {
-    console.log("hehr")
     session=req.session;
     if(session.userid){
       res.render("partials/list_trip.ejs", {'userid':session.userid, 'username': session.username})
@@ -94,6 +93,13 @@ app.get('/trip', function(req,res) {
       res.sendFile('views/login.html',{root:__dirname})
 })
 
+
+app.post('/savetrip', function(req,res){
+    console.log("here")
+    var b = req.body.path;
+    console.log(b);
+    res.end();
+})
 
 
 
@@ -109,12 +115,12 @@ app.post('/login',(req,res) => {
       console.log(req.body.username +" do not match "+req.body.password)
       res.send('Invalid username or password.<a href="/">Try again</a>');
   }
-})**/
+})
 
 app.get('/logout',(req,res) => {
   req.session.destroy();
   res.redirect('/');
-});
+});**/
 
 const userRoutes = require('./routes/user')
 app.use(userRoutes)
