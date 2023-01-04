@@ -4,6 +4,12 @@ const expressLayouts = require('express-ejs-layouts') // Import express layouts
 const app = express();              //Instantiate an express app, the main work horse of this server
 const port = 8080;                  //Save the port number where your server will be listening
 
+const bodyParser = require('body-parser');
+
+//conntectin API to app.post request
+const request = require('request');
+const apiKey='f5888c48b5394d11c84f3d67e835ca8e';
+
 /*********************************/
 /** DEFINITIONS TO USE SESSIONS **/
 /*********************************/
@@ -30,7 +36,9 @@ app.use(function(req, res, next) {
   next();
 });
 
-
+app.use(bodyParser.urlencoded({ extended: true}))
+app.use(express.static('public'));
+app.set('view engine','ejs')
 
 /*********************************/
 /*********** USING FILES *********/
@@ -76,9 +84,17 @@ app.get('', (req, res) => {
       res.sendFile('views/login.html',{root:__dirname})
 })
 
+app.get('/weather',function (req,res){
+  //res.send('Hello World')
+  console.log("ici");
+  res.render('views/vis.ejs',{weather:null, error:null, weatherIcon:null, date:null});
+})
+
+
 app.get('/vis', function (req, res) {
   session=req.session;
   if(session.userid){
+    console.log("i'm here");
     res.render("vis.ejs", {'userid':session.userid, 'username': session.username})
   } else
     res.sendFile('views/login.html',{root:__dirname})
@@ -86,17 +102,17 @@ app.get('/vis', function (req, res) {
 
 
 app.get('/trip', function(req,res) {
-    session=req.session;
-    if(session.userid){
-      res.render("partials/list_trip.ejs", {'userid':session.userid, 'username': session.username})
-    } else
-      res.sendFile('views/login.html',{root:__dirname})
+  session=req.session;
+  if(session.userid){
+    res.render("partials/list_trip.ejs", {'userid':session.userid, 'username': session.username})
+  } else
+    res.sendFile('views/login.html',{root:__dirname})
 })
 
 
 app.post('/savetrip', function(req,res){
     console.log("here")
-    var b = req.body.path;
+    var b = req.body.p;
     console.log(b);
     res.end();
 })
@@ -116,7 +132,6 @@ app.post('/login',(req,res) => {
       res.send('Invalid username or password.<a href="/">Try again</a>');
   }
 })
-
 app.get('/logout',(req,res) => {
   req.session.destroy();
   res.redirect('/');
@@ -135,5 +150,3 @@ app.use(visPathRoutes)
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
 });
-
-

@@ -48,7 +48,7 @@ body {
 #right {
   grid-column: 6/6;
   grid-row: 1;
-  margin-top: 550px;
+  margin-top: 840px;
   margin-left: 10px;
 }
 
@@ -122,7 +122,7 @@ body {
     height: 40px;
     background-color: rgb(254, 254, 254);
     border: 1px solid rgb(0, 0, 0);
-    top: -50px;
+    top: -45px;
     left : 20px;
     border-radius: 50%;
    
@@ -132,7 +132,7 @@ body {
 
   .hour {
     margin-left: -3px;
-    margin-top: -1px;
+    margin-top: 5px;
   }
     
   span {

@@ -15,21 +15,27 @@
      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
      crossorigin=""></script>
      <script> 
-      function savePath(){
-        var path_trip = get_path();
-        $.ajax({
+      function savePath(e){
+        if(!confirm('Are you sure of your trip?')) {
+          e.preventDefault();
+        } 
+        else {
+          console.log("ici")
+          var path_trip = get_path();
+          $.ajax({
           method: "POST",
           url: "/savetrip",
-          data: { path: path_trip },
+          data: { p: path_trip },
           context: document.body
           }).done(function (pa) {
           //$( this ).addClass( "done" );
           console.log("succeed at creating a path");
-          console.log(pa);
-        }).fail(function (e) {
+        }).fail(function (e) {  
           console.log("error");
           console.log(e);
         })
+        }
+        
       }
     </script>
 
@@ -42,7 +48,7 @@
     </div>
     <div id="content">
       <div id = "right">
-         <button onclick="savePath()" id ="saving">Save your trip</button> 
+         <button onclick="savePath(event)" id ="saving">Save your trip</button> 
       </div>
       <div id="content-center">
         <main>
