@@ -1,67 +1,75 @@
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/style2.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style2.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monserrat">
+    
+  </head>
   
-  <title>Document</title>
-</head>
-
-  <body onload="DefaultScreen()">
-    <h1 style = "color: rgb(55, 54, 44); text-align: center; padding-top: 10%;"> Hello ! You are on a website that allow you to plan day trip regarding weather. </h1>
-    <form style = " text-align: center; padding-top: 10%;"  action="/vis">
-    <label for="date-trip">Choose the date:</label>
-    <input type="date" id="start-trip" value="2023-01-05" name="trip-start" >
-    <input type="submit">
-    </form>
-    <div id="container"> 
-      <center >
-        <p id="inputContainer">City: <input type="text" id="cityInput"></p>
-        <button type="button" onclick="GetInfo()">Click Me</button>        
-        <h2 id="cityName">---Paris---</h2>
-    </center>
-    
-    <div id = "weatherContainer">
-        <div id="iconsContainer">    
-            <div class = "icons">
-                <p class="weather" id="day1"></p>
-                <div class="image"><img src="dots.png" class="imgClass" id="img1"></div>
-                <p class="minValues" id="day1Min">Loading...</p>
-                <p class="maxValues" id="day1Max">Loading...</p>
-            </div>
-            <div class = "icons">
-                <p class="weather" id="day2"></p>
-                <div class="image"><img src="dots.png" class="imgClass" id="img2"></div>
-                <p class="minValues" id="day2Min">Loading...</p>
-                <p class="maxValues" id="day2Max">Loading...</p>
-            </div>
-            <div class = "icons">
-                <p class="weather" id="day3"></p>
-                <div class="image"><img src="dots.png" class="imgClass" id="img3"></div>
-                <p class="minValues" id="day3Min">Loading...</p>
-                <p class="maxValues" id="day3Max">Loading...</p>
-            </div>
-            <div class = "icons">
-                <p class="weather" id="day4"></p>
-                <div class="image"><img src="dots.png" class="imgClass" id="img4"></div>
-                <p class="minValues" id="day4Min">Loading...</p>
-                <p class="maxValues" id="day4Max">Loading...</p>
-            </div>
-            <div class = "icons">
-                <p class="weather" id="day5"></p>
-                <div class="image"><img src="dots.png" class="imgClass" id="img5"></div>
-                <p class="minValues" id="day5Min">Loading...</p>
-                <p class="maxValues" id="day5Max">Loading...</p>
-            </div>
-        </div>
-    </div>
-    </div>
-    
-
-
-        <script src="./js/main.js"></script>
-
-
-</body>
-
- 
+    <body onload="DefaultScreen()" >
+      <div id="backgroundDiv">
+          <div id = "welcomeContainer">
+          <h1 style="color: #FFBF00 ; font-size:45px"> Make your sunny day with us!</h1>
+          </div>
+  
+          <div id ="dateContainer"  class="container">
+              <h1> Make your Trip by selecting the date</h1>
+              <form style = " text-align: left; padding-top: 2%;"  action="/vis">
+              <label for="date-trip" >Choose the date:</label>
+              <input type="date" id="start-trip" value="2023-01-05" name="trip-start" ><input type="submit">
+          </div>
+  
+          
+          </form>
+          <div id="weatherBigContainer" class="container">
+              <div id="weatherSearch"> 
+                  <h1> Check the upcoming 5 days weather of the city you like!</h1>
+                  <div id="gridBox">
+                      <div id="inputContainer">City: <input type="text" id="cityInput"></div>
+                      <button type="button" id ="submitButton"style="height:50px;width:100px;border:none;border-radius:5px;background-color: rgb(255, 248, 220);" onclick="GetInfo()">Submit</button>        
+                      <h2 id="cityName"></h2>
+                  </div>
+  
+                  
+              </div>
+              <div id = "weatherContainer">
+                  <div id="iconsContainer">    
+                      <div class = "icons">
+                          <p class="weather" id="day1"></p>
+                          <div class="image"><img src="dots.png" class="imgClass" id="img1"></div>
+                          <p class="minValues" id="day1Min">Loading...</p>
+                          <p class="maxValues" id="day1Max">Loading...</p>
+                      </div>
+                      <div class = "icons">
+                          <p class="weather" id="day2"></p>
+                          <div class="image"><img src="dots.png" class="imgClass" id="img2"></div>
+                          <p class="minValues" id="day2Min">Loading...</p>
+                          <p class="maxValues" id="day2Max">Loading...</p>
+                      </div>
+                      <div class = "icons">
+                          <p class="weather" id="day3"></p>
+                          <div class="image"><img src="dots.png" class="imgClass" id="img3"></div>
+                          <p class="minValues" id="day3Min">Loading...</p>
+                          <p class="maxValues" id="day3Max">Loading...</p>
+                      </div>
+                      <div class = "icons">
+                          <p class="weather" id="day4"></p>
+                          <div class="image"><img src="dots.png" class="imgClass" id="img4"></div>
+                          <p class="minValues" id="day4Min">Loading...</p>
+                          <p class="maxValues" id="day4Max">Loading...</p>
+                      </div>
+                      <div class = "icons">
+                          <p class="weather" id="day5"></p>
+                          <div class="image"><img src="dots.png" class="imgClass" id="img5"></div>
+                          <p class="minValues" id="day5Min">Loading...</p>
+                          <p class="maxValues" id="day5Max">Loading...</p>
+                      </div>
+                  </div>
+          </div>
+      </div>
+  
+          <script src="./js/main.js"></script>
+  
+  
+  </body>

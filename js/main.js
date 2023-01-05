@@ -2,7 +2,7 @@ function GetInfo() {
 
     var newName = document.getElementById("cityInput");
     var cityName = document.getElementById("cityName");
-    cityName.innerHTML = "--"+newName.value+"--";
+    //cityName.innerHTML = "--"+newName.value+"--";
 
 fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid=32ba0bfed592484379e51106cef3f204')
 .then(response => response.json())
