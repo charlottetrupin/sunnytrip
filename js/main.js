@@ -2,7 +2,6 @@ function GetInfo() {
 
     var newName = document.getElementById("cityInput");
     var cityName = document.getElementById("cityName");
-    //cityName.innerHTML = "--"+newName.value+"--";
 
 fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid=32ba0bfed592484379e51106cef3f204')
 .then(response => response.json())
@@ -11,7 +10,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appi
     //Getting the min and max values for each day
     for(i = 0; i<5; i++){
         document.getElementById("day" + (i+1) + "Min").innerHTML = "Min: " + Number(data.list[i].main.temp_min - 273.15).toFixed(1)+ "°";
-        //Number(1.3450001).toFixed(2); // 1.35
     }
 
     for(i = 0; i<5; i++){
@@ -26,9 +24,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appi
         +".png";
     }
     //------------------------------------------------------------
-    console.log(data)
-
-
 })
 
 .catch(err => alert("Something Went Wrong: Try Checking Your Internet Coneciton"))

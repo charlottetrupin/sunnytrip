@@ -12,7 +12,7 @@ const pointSnow = new Image();
 pointSnow.src = 'http://openweathermap.org/img/wn/13d@2x.png';
 
 
-
+/** False values of the weather for the next 5 days */
 var weather_situation = [
     {
         "day": "2023-01-05",
@@ -53,7 +53,7 @@ onload= () => {
     var date = params.get('trip-start');
     document.getElementById("date").innerHTML = date;
 
-
+    
     for(let i = 0; i < weather_situation.length; i++){
         if(date == weather_situation[i].day) {
             temperature= weather_situation[i].temperature;

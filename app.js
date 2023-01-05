@@ -107,7 +107,6 @@ app.get('/trip', function(req,res) {
 app.post('/savetrip', function(req,res){
     var path = req.body.p;
     var date = req.body.d
-    console.log(date); 
     fs.writeFile("json/"+date+".json", JSON.stringify(path), err=>{
         if(err){
           console.log(err);
@@ -118,26 +117,6 @@ app.post('/savetrip', function(req,res){
 })
 
 
-
-
-
-/**
-// LOGIN
-app.post('/login',(req,res) => {
-  if(req.body.userid == myusername && req.body.password == mypassword){
-      session=req.session;
-      session.userid=req.body.userid;
-      res.render("index.ejs", {'userid':session.userid})
-  }
-  else{
-      console.log(req.body.username +" do not match "+req.body.password)
-      res.send('Invalid username or password.<a href="/">Try again</a>');
-  }
-})
-app.get('/logout',(req,res) => {
-  req.session.destroy();
-  res.redirect('/');
-});**/
 
 const userRoutes = require('./routes/user')
 app.use(userRoutes)

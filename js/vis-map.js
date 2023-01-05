@@ -14,7 +14,7 @@ save_trip.style.visibility = "visible"  ;
 
 
 
-
+/** Locations of famous places in Paris */
 let locations = [
     {
         "id": 1,
@@ -149,28 +149,26 @@ let popupOption = {
     
 }
 
-var id = 1;
-var count = 0;
-var insert = false;
-var polyline = L.polyline([], { color: 'red' }).addTo(map); ;
+var id = 0; // the id corresponding to a radiobutton
+var insert = false; 
+var polyline = L.polyline([], { color: 'red' }).addTo(map); 
+
 locations.forEach(element => {
     
+
+    //Create buttons to add markers to path
     let btnAdd = document.createElement('button');
     btnAdd.className = 'addtopath';
     btnAdd.innerHTML = 'Add to path';
     
-
-    
-
+    //Putting the button in a div with the corresponding marker name
     let btnDiv = document.createElement('div')
     btnDiv.append(element.title)
     let br = document.createElement('br');
     btnDiv.append(br);
     btnDiv.append(btnAdd)
 
-
-
-
+    //Create the marker at the correct location with specific icon.
     new L.Marker([element.lat, element.long], { icon: new L.icon({ iconUrl: element.src, iconSize: [40, 40] }) }).addTo(map)
 
         .on("mouseover", event => {
@@ -181,11 +179,9 @@ locations.forEach(element => {
         })
 
 
-    
-
     btnAdd.onclick = () => {
-
         
+        //Checking which radioButton is selected and gettig its id 
         const radioButtons = document.querySelectorAll('input[name="hour"]');
         for (const radioButton of radioButtons) {
             if (radioButton.checked) {
@@ -194,38 +190,32 @@ locations.forEach(element => {
             }
         }
         
-
+        //Getting the corresponding circle in the timeline  
         var c = id.toString();
         var headerlist = document.getElementById(c);
         
+        //If no marker were already putted
         if(headerlist.childNodes.length == 0){
-            
+           
+            // Inserting the icon and the name of the place in the timeline
             var span = document.createElement("span");
-       
-
-            var icone = document.createElement("img");
-            icone.src = element.src;
-            icone.setAttribute("height", "40");
-            icone.setAttribute("width", "40");
-            icone.style.marginLeft = "-1px";
-            icone.style.marginTop = "-8.5px";
-    
+            var icon = document.createElement("img");
+            icon.src = element.src;
+            icon.setAttribute("height", "40");
+            icon.setAttribute("width", "40");
+            icon.style.marginLeft = "-1px";
+            icon.style.marginTop = "-8.5px";
             var name_place = document.createElement("p")
             name_place.setAttribute("id", "name-place");
             var br = document.createElement("br")
             name_place.innerHTML = element.title;
             name_place.style.marginLeft = "-10px";
-    
-    
-            span.appendChild(icone);
+            span.appendChild(icon);
             span.appendChild(name_place);
-            
-        
-           
-            span.setAttribute("id", id);
-    
+
             headerlist.appendChild(span);
             
+            //putting the location of the marker in the map_path list with the id corresponding to their place on the timeline
             if(map_path.length == 0) {
                 map_path.push( {
                     id : id,
@@ -234,8 +224,7 @@ locations.forEach(element => {
             }
             else {
                 for(let i = 0 ; i < map_path.length; i++){
-                
-                    if(parseInt(map_path[i].id) > c) {
+                    if(parseInt(map_path[i].id) > c) {  //Checking where the location needs to be put (it needs to be put in chronological order)
                         insert = true;
                         map_path.splice(i,0,{
                             id : id,
@@ -243,7 +232,6 @@ locations.forEach(element => {
                         )
                         break;
                     }
-                    
                 }
                 if(!insert){
                     map_path.push( {
@@ -256,14 +244,14 @@ locations.forEach(element => {
         
             id++;
 
-            draw_path();
+            draw_path();  //draw the path
 
             span.ondblclick = function(event) {
-                $(headerlist).html(""); 
+                $(headerlist).html("");  //empty the timeline circle corresponding
                 for(let i = 0 ; i < map_path.length; i++){
-                    if(map_path[i].id == c){
-                        map_path.splice(i,1);
-                        draw_path();
+                    if(map_path[i].id == c){  
+                        map_path.splice(i,1);  //Removing the location from the map_path list
+                        draw_path();            //Redrawing the new path
                         break;
                     }
                 }
@@ -287,7 +275,7 @@ function draw_path(){
             for(let i = 0 ; i < map_path.length; i++){
                 latlngs.push(map_path[i].pos)
             }
-            polyline = L.polyline(latlngs, { color: '   #9c1c1c   ' }).addTo(map);
+            polyline = L.polyline(latlngs, { color: '#9c1c1c' }).addTo(map);
 }
 
 
@@ -298,17 +286,6 @@ function get_path(){
 function get_date(){
     return document.getElementById("date").innerHTML;
 }
-
-
-/**
-
-$.getJSON('./get-path', function (data) {
-    //var polyline = L.polyline(data.path, { color: 'red' }).addTo(map);
-
-    // zoom the map to the polyline
-    map.fitBounds(polyline.getBounds());
-
-})**/
 
 
 var popup = L.popup();
